@@ -1,0 +1,28 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FCG.Payments.Api", "src\FCG.Payments.Api\FCG.Payments.Api.csproj", "{6F2B3F9C-7C3F-4F4F-BF55-5F6CAFFAF505}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FCG.Contracts", "shared\FCG.Contracts\FCG.Contracts.csproj", "{1B7E1D4F-2F1B-4F0C-9B85-DEA5C4F0A001}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FCG.BuildingBlocks", "shared\FCG.BuildingBlocks\FCG.BuildingBlocks.csproj", "{2C8E2E5A-3F2C-4F1D-AC86-EFB6D5F1B002}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F2B3F9C-7C3F-4F4F-BF55-5F6CAFFAF505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F2B3F9C-7C3F-4F4F-BF55-5F6CAFFAF505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2B3F9C-7C3F-4F4F-BF55-5F6CAFFAF505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F2B3F9C-7C3F-4F4F-BF55-5F6CAFFAF505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7E1D4F-2F1B-4F0C-9B85-DEA5C4F0A001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7E1D4F-2F1B-4F0C-9B85-DEA5C4F0A001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7E1D4F-2F1B-4F0C-9B85-DEA5C4F0A001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7E1D4F-2F1B-4F0C-9B85-DEA5C4F0A001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C8E2E5A-3F2C-4F1D-AC86-EFB6D5F1B002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C8E2E5A-3F2C-4F1D-AC86-EFB6D5F1B002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C8E2E5A-3F2C-4F1D-AC86-EFB6D5F1B002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8E2E5A-3F2C-4F1D-AC86-EFB6D5F1B002}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
