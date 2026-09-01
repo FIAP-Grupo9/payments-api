@@ -49,7 +49,7 @@ try
 
     builder.Services.AddSingleton<IPaymentSimulator, PaymentSimulator>();
 
-    builder.Services.AddFcgMessaging(builder.Configuration, x =>
+    builder.Services.AddFcgMessaging(builder.Configuration, "payments", x =>
     {
         x.AddConsumer<OrderPlacedConsumer>();
     });
