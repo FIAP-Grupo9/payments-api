@@ -27,6 +27,15 @@ Processa (simula) o pagamento de uma compra de jogo. **Consume** `OrderPlacedEve
 |---|---|---|---|
 | GET | `/api/orders/{id}` | autenticado | Consulta status de uma ordem (debug/observabilidade) |
 | GET | `/health` | público | Health check |
+| GET | `/metrics` | interno | Métricas no formato Prometheus |
+
+---
+
+## Observabilidade (Fase 3)
+
+O serviço publica métricas em `/metrics`, coletadas pelo Prometheus e exibidas no painel do Grafana: tempo de resposta, volume de requisições e taxa de erros. O endereço é interno ao cluster.
+
+Este serviço permanece **interno**: não é roteado pelo gateway, já que a compra é iniciada pela CatalogAPI e o pagamento acontece por mensageria.
 
 PaymentsAPI é majoritariamente **consumer-driven** — não tem rotas REST de negócio.
 
