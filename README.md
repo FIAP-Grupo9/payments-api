@@ -87,6 +87,23 @@ Invoke-RestMethod -Uri "http://localhost:5003/api/orders/$orderId" -Headers @{ A
 
 ---
 
+## Testes
+
+Projeto `tests/FCG.Payments.Api.Tests` (xUnit + Moq):
+
+```powershell
+dotnet test tests/FCG.Payments.Api.Tests/FCG.Payments.Api.Tests.csproj
+```
+
+## CI/CD
+
+GitHub Actions (`.github/workflows/ci.yml`):
+
+- **CI** — em todo push ou pull request para `master`: `dotnet restore` + `build` + os testes acima.
+- **CD** — só em push na `master`: build e publicação da imagem Docker em `ghcr.io/fiap-grupo9/payments-api` (tags `latest` e `<sha>`), usando o token automático do Actions.
+
+Não há deploy automático: o único ambiente hoje é o Kubernetes/docker-compose local (ver `orchestration`), fora do alcance do GitHub Actions. A imagem fica publicada no registry, pronta para um deploy manual.
+
 ## Decisões arquiteturais
 
 - **Simulação determinística** (`amount > 10000 → rejected`): garante reprodutibilidade para demo e testes. Em produção, integração com gateway real (Stripe, MercadoPago etc.).
