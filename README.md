@@ -105,6 +105,8 @@ GitHub Actions (`.github/workflows/ci.yml`):
 
 Secrets do GitHub usados por este workflow (nível de organização `FIAP-Grupo9`): `AZURE_CREDENTIALS`, `ACR_LOGIN_SERVER`, `AKS_RESOURCE_GROUP`, `AKS_CLUSTER_NAME`, `JWT_SECRET`, `PAYMENTS_DB_PASSWORD`. A infraestrutura compartilhada (Postgres, RabbitMQ, MongoDB, Redis, Elasticsearch, Kong) é aplicada separadamente pelo workflow `deploy-infra.yml` do repositório `orchestration` — ver o README dele.
 
+A imagem aplicada no `Deployment` é sempre a tag `<sha>` do commit (nunca `latest`): isso torna o rollout determinístico — o mesmo `kubectl apply` nunca reaplica uma imagem já em execução por engano, e dá pra rastrear exatamente qual commit está rodando no cluster a qualquer momento.
+
 ## Decisões arquiteturais
 
 - **Simulação determinística** (`amount > 10000 → rejected`): garante reprodutibilidade para demo e testes. Em produção, integração com gateway real (Stripe, MercadoPago etc.).
