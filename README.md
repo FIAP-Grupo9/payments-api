@@ -100,9 +100,10 @@ dotnet test tests/FCG.Payments.Api.Tests/FCG.Payments.Api.Tests.csproj
 GitHub Actions (`.github/workflows/ci.yml`):
 
 - **CI** — em qualquer pull request (não importa a branch de base) e em todo push na `master`: `dotnet restore` + `build` + os testes acima.
-- **CD** — só em push na `master`: build e publicação da imagem Docker em `ghcr.io/fiap-grupo9/payments-api` (tags `latest` e `<sha>`), usando o token automático do Actions.
+- **CD** — só em push na `master`: build e publicação da imagem Docker no **Azure Container Registry** (`$ACR_LOGIN_SERVER/payments-api`, tags `latest` e `<sha>`), autenticando com o Service Principal do projeto.
+- **Deploy** — na sequência, aplica `k8s/configmap.yaml` e `k8s/secret.yaml` (segredos injetados via `envsubst` a partir de GitHub Secrets — nenhum valor real fica no repositório) e `k8s/deployment.yaml`/`service.yaml` com a imagem recém-publicada no **AKS**, confirmando rolling update sem downtime com `kubectl rollout status`.
 
-Não há deploy automático: o único ambiente hoje é o Kubernetes/docker-compose local (ver `orchestration`), fora do alcance do GitHub Actions. A imagem fica publicada no registry, pronta para um deploy manual.
+Secrets do GitHub usados por este workflow (nível de organização `FIAP-Grupo9`): `AZURE_CREDENTIALS`, `ACR_LOGIN_SERVER`, `AKS_RESOURCE_GROUP`, `AKS_CLUSTER_NAME`, `JWT_SECRET`, `PAYMENTS_DB_PASSWORD`. A infraestrutura compartilhada (Postgres, RabbitMQ, MongoDB, Redis, Elasticsearch, Kong) é aplicada separadamente pelo workflow `deploy-infra.yml` do repositório `orchestration` — ver o README dele.
 
 ## Decisões arquiteturais
 
